@@ -227,6 +227,10 @@ class PdfWrapper{
      */
     public function inline($filename = 'document.pdf')
     {
+        if (config('snappy.pdf.debug', false)) {
+            echo $this->html;
+            return;
+        }
         return new Response($this->output(), 200, array(
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="'.$filename.'"',
