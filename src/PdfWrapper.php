@@ -132,6 +132,7 @@ class PdfWrapper{
         }
         $this->html = $html;
         $this->file = null;
+
         return $this;
     }
 
@@ -158,9 +159,15 @@ class PdfWrapper{
      */
     public function loadView($view, $data = array(), $mergeData = array())
     {
-	$view = View::make($view, $data, $mergeData);
+	    $view = View::make($view, $data, $mergeData);
 
-	return $this->loadHTML($view);
+        //Add in our footer
+        $sections = $view->renderSections();
+        if (! empty($sections['footer'])) {
+            $this->snappy->setOption('footer-html', $sections['footer']);
+        }
+
+	    return $this->loadHTML($view);
     }
 
     /**
