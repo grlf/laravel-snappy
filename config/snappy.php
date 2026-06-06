@@ -17,8 +17,8 @@ return [
     |
     |    The file path of the wkhtmltopdf / wkhtmltoimage executable.
     |
-    | Timout:
-    |
+    | Timeout:
+    |    
     |    The amount of time to wait (in seconds) before PDF / Image generation is stopped.
     |    Setting this to false disables the timeout (unlimited processing time).
     |
